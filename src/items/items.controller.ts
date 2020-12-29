@@ -1,20 +1,29 @@
 import { Controller, Get, Post, Put, Delete, Body, Param} from '@nestjs/common';
-import { CreateItemDto } from './DTO/create-item.dto';
+import { CreateItemDto } from './dto/create-item.dto';
+import { ItemsService } from './items.service';
+import { Item } from './interfaces/item.interface';
 
 @Controller('items')
 export class ItemsController {
+    // Injecing items service 
+    // NOTE: pretty much what you do in angular
+    constructor(private readonly itemsService: ItemsService) {}
+
+
     // This decorator tells nest to create a'Get' endpoint for /items (eg. localhost:3000/items)
     // No routes file or anything like that 
     @Get()
-    findAll(): string {
-        return 'Get all items';
+    findAll(): Item[] {
+        return this.itemsService.findAll();
     }
 
     @Get(':id') 
     // findOne(@Param() param): string {
-    findOne(@Param('id') id): string {
+    // findOne(@Param('id') id): string {
+    findOne(@Param('id') id): Item {
         // return `Item ${param.id}`;
-        return `Item ${id}`;
+        // return `Item ${id}`;
+        return this.itemsService.findOne(id);
     }
     
     // The Body decorator below is similar to using req.body
