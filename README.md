@@ -6,5 +6,9 @@ REST endpoint project using Next.js. Made following [Brad Traversy's tutorial](h
 ## Main Frameworks / Libraries
 - [Nest](https://nestjs.com/)
 
+## Setup
+
+In **src/config** - rename `keys.sample.ts` to `keys.ts` and replace the Mongo URI with the appropriate value. 
+
 ## Development 
 `npm run start:dev`
