@@ -13,14 +13,14 @@ export class ItemsController {
     // This decorator tells nest to create a'Get' endpoint for /items (eg. localhost:3000/items)
     // No routes file or anything like that 
     @Get()
-    findAll(): Item[] {
+    findAll(): Promise<Item[]> {
         return this.itemsService.findAll();
     }
 
     @Get(':id') 
     // findOne(@Param() param): string {
     // findOne(@Param('id') id): string {
-    findOne(@Param('id') id): Item {
+    findOne(@Param('id') id): Promise<Item> {
         // return `Item ${param.id}`;
         // return `Item ${id}`;
         return this.itemsService.findOne(id);
@@ -28,18 +28,30 @@ export class ItemsController {
     
     // The Body decorator below is similar to using req.body
     // The DTO shows what we would be passing in and gives us access to those properties
+    // @Post()
+    // create(@Body() createItemDto: CreateItemDto): string {
+    //     return `Name ${createItemDto.name} Desc: ${createItemDto.description}`;
+    // }
     @Post()
-    create(@Body() createItemDto: CreateItemDto): string {
-        return `Name ${createItemDto.name} Desc: ${createItemDto.description}`;
+    create(@Body() createItemDto: CreateItemDto): Promise<Item> {
+        return this.itemsService.create(createItemDto)
     }
 
+    // @Delete(':id')
+    // delete(@Param('id') id): string {
+    //     return `Deleted ${id}`;
+    // }
     @Delete(':id')
-    delete(@Param('id') id): string {
-        return `Deleted ${id}`;
+    delete(@Param('id') id): Promise<Item> {
+        return this.itemsService.delete(id);
     }
 
+    // @Put(':id') 
+    // update(@Body() updateItemDto: CreateItemDto, @Param('id') id): string {
+    //     return `Updated ID: ${id} - ${updateItemDto.name}, Desc: ${updateItemDto.description}`;
+    // }
     @Put(':id') 
-    update(@Body() updateItemDto: CreateItemDto, @Param('id') id): string {
-        return `Updated ID: ${id} - ${updateItemDto.name}, Desc: ${updateItemDto.description}`;
+    update(@Body() updateItemDto: CreateItemDto, @Param('id') id): Promise<Item> {
+        return this.itemsService.update(id, updateItemDto);
     }
 }
