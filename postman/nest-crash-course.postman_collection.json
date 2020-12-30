@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "53b98016-1820-4eeb-bc21-1a640600b732",
+		"name": "nest-crash-course",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Initial Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items"
+					]
+				},
+				"description": "Hellow World Request"
+			},
+			"response": []
+		},
+		{
+			"name": "findAll Items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/items",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items"
+					]
+				},
+				"description": "Gets all items"
+			},
+			"response": []
+		},
+		{
+			"name": "create(id)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Item three\",\r\n    \"qty\" : 6,\r\n    \"description\": \"wooooow\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/items",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items"
+					]
+				},
+				"description": "Creates an item using the CreateItemDto"
+			},
+			"response": []
+		},
+		{
+			"name": "findOne(id)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/items/5fec95f738929735ac93f523",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items",
+						"5fec95f738929735ac93f523"
+					]
+				},
+				"description": "Gets Item with ID 5fec95f738929735ac93f523"
+			},
+			"response": []
+		},
+		{
+			"name": "delete(id)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/items/5fec960a38929735ac93f524",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items",
+						"5fec960a38929735ac93f524"
+					]
+				},
+				"description": "Deletes Item 5fec960a38929735ac93f524"
+			},
+			"response": []
+		},
+		{
+			"name": "update(id) (qty only of existing Item)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"qty\" : 16\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/items/5fec95f738929735ac93f523",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items",
+						"5fec95f738929735ac93f523"
+					]
+				},
+				"description": "Updates the Quantity (to 16) of Item with ID 5fec95f738929735ac93f523 (assuming it exists)"
+			},
+			"response": []
+		}
+	]
+}

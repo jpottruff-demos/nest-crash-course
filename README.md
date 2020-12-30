@@ -3,6 +3,8 @@
 ## Overview 
 REST endpoint project using Next.js. Made following [Brad Traversy's tutorial](https://www.youtube.com/watch?v=wqhNoDE6pb4) on *youtube*
 
+Postman requests export/reference can be found in the `postman` folder.
+
 ## Main Frameworks / Libraries
 - [Nest](https://nestjs.com/)
 
